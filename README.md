@@ -8,7 +8,7 @@ Install docker service and Git package in Ubuntu 16.04 Host
 ```
 $ sudo apt-get update
 $ sudo apt-get install docker.io git
-
+$ sudo service docker start
 ```
 
 Clone repository
