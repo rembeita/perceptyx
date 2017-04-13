@@ -4,10 +4,10 @@
 
 Install docker service in Ubuntu 16.04 Host
 
-'''
+´´´
 $ apt-get update
 $ apt-get install docker.io git
-'''
+
 
 starting script
 start mysql
