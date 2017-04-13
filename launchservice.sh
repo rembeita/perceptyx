@@ -5,6 +5,6 @@ cd /opt/test_db
 mysql -uroot -proot < /opt/test_db/employees_partitioned.sql
 
 service nginx start
-cd /opt/app
-uwsgi --ini /opt/app/app.ini &
-chmod 666 /opt/app/app.sock
+service php7.0-fpm start
+
+tail -f /var/log/nginx/error.log

@@ -14,11 +14,12 @@ RUN echo "mysql-server-5.6 mysql-server/root_password password root" | debconf-s
 RUN echo "mysql-server-5.6 mysql-server/root_password_again password root" | debconf-set-selections
 
 #Install packages
-RUN apt-get -y install mysql-server-5.7 nginx git python python-pip
-RUN pip install uwsgi
+RUN apt-get -y install mysql-server-5.7 nginx git php-fpm php-mysql php-json
+RUN apt-get -y install vim
 
 #Clone repo and install database
 RUN mkdir -p /opt/test_db
+RUN mkdir -p /run/php
 RUN git clone https://github.com/datacharmer/test_db /opt/test_db
 
 #Configuring Nginx
@@ -30,3 +31,6 @@ COPY app /opt/app
 #Copy launch script
 COPY launchservice.sh /
 RUN chmod +x /launchservice.sh
+
+
+ENTRYPOINT ["/launchservice.sh"]

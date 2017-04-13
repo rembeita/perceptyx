@@ -1,8 +1,21 @@
 server {
-    listen 80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /opt/app;
+    index index.php index.html index.htm index.nginx-debian.html;
+
 
     location / {
-        include         uwsgi_params;
-        uwsgi_pass      unix:/opt/app/app.sock;
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht { 
+        deny all;
     }
 }
