@@ -1,26 +1,30 @@
 # Perceptyx Test
 
-## Package installation
+## Installation Guide Ubuntu 16.04
+######Package installation
 
-Install docker service in Ubuntu 16.04 Host
+Install docker service and Git package in Ubuntu 16.04 Host
 
 ```
-$ apt-get update
-$ apt-get install docker.io git
+$ sudo apt-get update
+$ sudo apt-get install docker.io git
+
 ```
 
-starting script
-start mysql
-send info
+Clone repository
+```
+$ git clone https://github.com/rembeita/perceptyx.git
+```
 
+Build image
+```
+$ cd perceptyx
+$ sudo docker build -t perceptyx .
+```
 
-#!/bin/bash
+Run Image with port forwarding for the Nginx port
+```
+$ sudo docker run -p 80:80 perceptyx
+```
 
-service mysql start
-cd /opt/test_db
-mysql -uroot -proot < /opt/test_db/employees_partitioned.sql
-
-
-rm default
-
-
+Access site with the browser
