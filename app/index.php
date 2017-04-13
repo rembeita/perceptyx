@@ -1,4 +1,5 @@
 <?php
+// Mysql parameters
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -17,9 +18,11 @@ else
 	echo "Connected successfully<br>";
 }
 
+// Sql Query
 $sql = "SELECT *  FROM employees where gender = 'M' and birth_date = '1965-02-01' and hire_date >= '1990-01-01' order by trim(last_name), trim(first_name)";
 $result = $conn->query($sql);
 
+// Rows array for json format
 $rows = array();
 
 echo "<h1>Text Format</h1><br><br>";
@@ -38,22 +41,11 @@ else
 }
 echo "<br><h1>Json Format</h1><br><br>";
 
-print json_encode($rows);
+// Printing Json Format
+echo json_encode($rows);
 
-
+// Closing db connection
 $conn->close();
 
-/*
-+------------+---------------+------+-----+---------+-------+
-| Field      | Type          | Null | Key | Default | Extra |
-+------------+---------------+------+-----+---------+-------+
-| emp_no     | int(11)       | NO   | PRI | NULL    |       |
-| birth_date | date          | NO   |     | NULL    |       |
-| first_name | varchar(14)   | NO   |     | NULL    |       |
-| last_name  | varchar(16)   | NO   |     | NULL    |       |
-| gender     | enum('M','F') | NO   |     | NULL    |       |
-| hire_date  | date          | NO   |     | NULL    |       |
-+------------+---------------+------+-----+---------+-------+
-*/
 ?>
 
