@@ -28,3 +28,6 @@ $ sudo docker run -p 80:80 perceptyx
 ```
 
 Access site with the browser
+
+
+![Alt text](/perceptyx.jpg?raw=true "Optional Title")
